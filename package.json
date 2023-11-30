@@ -1,0 +1,106 @@
+{
+  "name": "@lands/antd-react-components",
+  "version": "0.1.18",
+  "description": "lands-后台开发常用的react组件",
+  "license": "MIT",
+  "author": {
+    "name": "兰涛",
+    "email": "550947002@qq.com"
+  },
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "father build",
+    "build:watch": "father dev",
+    "dev": "dumi dev",
+    "docs:build": "dumi build",
+    "doctor": "father doctor",
+    "lint": "npm run lint:es && npm run lint:css",
+    "lint:css": "stylelint \"{src,test}/**/*.{css,less}\"",
+    "lint:es": "eslint \"{src,test}/**/*.{js,jsx,ts,tsx}\"",
+    "prepare": "husky install",
+    "prepublishOnly": "father doctor && npm run build",
+    "start": "npm run dev"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "lint-staged": {
+    "*.{md,json}": [
+      "prettier --write --no-error-on-unmatched-pattern"
+    ],
+    "*.{css,less}": [
+      "stylelint --fix",
+      "prettier --write"
+    ],
+    "*.{js,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{ts,tsx}": [
+      "eslint --fix",
+      "prettier --parser=typescript --write"
+    ]
+  },
+  "dependencies": {
+    "@ant-design/use-emotion-css": "^1.0.4",
+    "@types/crypto-js": "^4.1.1",
+    "@types/react-beautiful-dnd": "^13.1.4",
+    "@umijs/route-utils": "^4.0.1",
+    "antd": "^5.8.2",
+    "classnames": "^2.3.2",
+    "crypto-js": "^4.1.1",
+    "dumi": "^2.2.4",
+    "dumi-theme-antd-style": "^0.27.4",
+    "eventemitter3": "^5.0.1",
+    "file-saver": "^2.0.5",
+    "js-base64": "^3.7.5",
+    "react-beautiful-dnd": "^13.1.1",
+    "react-router": "^6.14.2",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@ant-design/icons": "^5.2.4",
+    "@ant-design/pro-components": "^2.6.10",
+    "@commitlint/cli": "^17.6.7",
+    "@commitlint/config-conventional": "^17.6.7",
+    "@types/file-saver": "^2.0.5",
+    "@types/lodash": "^4.14.196",
+    "@types/react": "^18.2.18",
+    "@types/react-dom": "^18.2.7",
+    "@umijs/fabric": "^2.14.1",
+    "@umijs/lint": "^4.0.74",
+    "dayjs": "^1.11.9",
+    "eslint": "^8.46.0",
+    "father": "^4.3.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.3",
+    "lodash": "^4.17.21",
+    "prettier": "^2.8.8",
+    "prettier-plugin-organize-imports": "^3.2.3",
+    "prettier-plugin-packagejson": "^2.4.5",
+    "react": "^18.2.0",
+    "react-activation": "^0.12.4",
+    "react-dom": "^18.2.0",
+    "react-json-view": "^1.21.3",
+    "stylelint": "^15.10.2"
+  },
+  "peerDependencies": {
+    "@ant-design/icons": "^5.0.1",
+    "@ant-design/pro-components": "^2.6.3",
+    "@types/lodash": "^4.0.0",
+    "antd": "^5.6.0",
+    "dayjs": "^1.11.7",
+    "lodash": "^4.0.0",
+    "react": ">=16.9.0",
+    "react-dom": ">=16.9.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
