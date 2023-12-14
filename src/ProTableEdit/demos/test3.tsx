@@ -64,7 +64,6 @@ const { returnTag } = utils;
 export default () => {
   const actionRef = useRef<ActionType>();
   const editActionRef = useRef<editActionRefProps>();
-  const [initData, setInitData] = useState<Record<string, any>>({});
   const [openEdit, setOpenEdit] = useState(false);
   const columns: ProTableEditColumns<Record<string, any>>[] = [
     {
@@ -78,7 +77,7 @@ export default () => {
       dataIndex: 'userId',
       width: 64,
       // 不重置userId
-      immunityReset: !!initData?.userId,
+      immunityReset: true,
       renderFormItem: () => {
         return <Input disabled />;
       },
@@ -169,8 +168,9 @@ export default () => {
           <a
             key="edit"
             onClick={async () => {
+              editActionRef.current?.setInitData(row);
+              editActionRef.current?.setModalTitle('编辑');
               setOpenEdit(true);
-              setInitData(row);
             }}
           >
             编辑
@@ -189,7 +189,8 @@ export default () => {
             type="primary"
             key="primary"
             onClick={() => {
-              setInitData({});
+              editActionRef.current?.setInitData({});
+              editActionRef.current?.setModalTitle('新增');
               setOpenEdit(true);
             }}
           >
@@ -208,7 +209,6 @@ export default () => {
 
       <ProTableEdit
         editActionRef={editActionRef}
-        modalTitle={initData?.userId ? '编辑' : '新增'}
         columns={columns}
         open={openEdit}
         setOpen={setOpenEdit}
@@ -218,13 +218,11 @@ export default () => {
         }}
         onSubmit={async function () {
           return new Promise((resolve) => {
-            resolve(11);
+            resolve({ bizCode: 'success' });
           });
         }}
-        initData={{
-          data: initData,
-          dataKey: 'userId',
-        }}
+        isCarryingInitialParams={false}
+        initDataKey={['key', 'userId']}
         tableActionRef={actionRef}
       />
     </>

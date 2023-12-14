@@ -6,6 +6,6 @@ hero:
     - text: 开始使用
       link: /guide
     - text: 组件库
-      link: http://{私有库地址:端口}/
+      link: http://npm.lantao.work/
       openExternal: true
 ---

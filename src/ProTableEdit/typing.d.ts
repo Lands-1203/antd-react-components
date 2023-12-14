@@ -205,7 +205,7 @@ export interface ProTableEditProps<T = any> {
   /**
    * @description 初始数据中的编辑主键key 该值会判断请求的方式 如果initDataKey中对应的变量有值 则使用PUT方法否则使用POST方法，该模式可根据参数subMethod强制改变
    */
-  initDataKey?: string | number;
+  initDataKey?: string | number | (string | number)[];
   /**
    * @description 表单初始数据
    */

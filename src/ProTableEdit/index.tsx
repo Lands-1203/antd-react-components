@@ -3,7 +3,12 @@ import { ProTable } from '@ant-design/pro-components';
 import type { FormInstance } from 'antd';
 import { Button, Modal, message } from 'antd';
 import React, { useEffect, useImperativeHandle, useRef, useState } from 'react';
-import { formatDate, isCodeSuccess } from '../utils';
+import {
+    formatDate,
+    getPropertyValue,
+    isCodeSuccess,
+    setPropertyValue,
+} from '../utils';
 import './styles.less';
 import { ProTableEditProps, editActionRefProps } from './typing';
 /**
@@ -36,7 +41,8 @@ export default function ProTableEdit<T = any>(props: ProTableEditProps<T>) {
     okText,
     cancelText,
     layout = 'horizontal',
-    isCarryingInitialParams = true, // 之后的传参是否需要initdata.data为请求参数的迭代对象
+    /** 之后的传参是否需要initdata.data为请求参数的迭代对象 */
+    isCarryingInitialParams = true,
   } = props;
 
   const code = 'bizCode';
@@ -51,9 +57,9 @@ export default function ProTableEdit<T = any>(props: ProTableEditProps<T>) {
   const [initData, setInitData] = useState<Record<string, any> | undefined>(
     propsFormInitData || [],
   );
-  const [initDataKey, setInitDataKey] = useState<string | number | undefined>(
-    propsInitDataKey,
-  );
+  const [initDataKey, setInitDataKey] = useState<
+    typeof propsInitDataKey | undefined
+  >(propsInitDataKey);
 
   const [OK_TEXT, setOK_TEXT] = useState('');
   const [CANCEL_TEXT, setCANCEL_TEXT] = useState('');
@@ -126,147 +132,154 @@ export default function ProTableEdit<T = any>(props: ProTableEditProps<T>) {
     setCANCEL_TEXT(cancelText || '');
   }, [cancelText]);
 
+  const getInitDataKeyValue = () => getPropertyValue(initData, initDataKey);
+  /** 表格校验 */
+  const handleValidateFields = async () => {
+    formRef?.current?.validateFields().catch((e) => {
+      e?.errorFields?.[0]?.errors?.[0] &&
+        message.error({
+          content: e?.errorFields?.[0]?.errors?.[0],
+          duration: 1,
+        });
+      e?.errorFields?.[0]?.name?.[0] &&
+        formRef.current?.scrollToField(e?.errorFields?.[0]?.name?.[0]);
+      setSubmitButton(false);
+    });
+    await formRef?.current?.validateFields();
+  };
+  /** 格式化时间数据 */
+  const handleSubmitDataForTime = () => {
+    columns.forEach((item) => {
+      const dataIndex = item?.dataIndex;
+      const valueType = (item.valueType as string) || '';
+      if (
+        (valueType.indexOf('date') !== -1 ||
+          valueType.indexOf('time') !== -1) &&
+        dataIndex
+      ) {
+        const val = formRef.current?.getFieldValue(item?.dataIndex || '');
+        if (dataIndex instanceof Array) {
+          const temp = {};
+          let tv: Record<string, any> = temp;
+          dataIndex.forEach((dv, i) => {
+            if (i === dataIndex.length - 1) {
+              tv[dv] = formatDate(val, valueType as any);
+            } else {
+              tv[dv] = {};
+            }
+            tv = tv[dv];
+          });
+          formRef.current?.setFieldsValue(temp);
+        } else if (typeof dataIndex === 'string') {
+          val &&
+            formRef.current?.setFieldsValue({
+              [dataIndex]: formatDate(val, valueType as any),
+            });
+        }
+      }
+    });
+  };
+  /**  获取初始参数 并做基本处理*/
+  const getOriginalParams = () => {
+    const formParams = formRef?.current?.getFieldsValue();
+    let params: Record<string, any> = {};
+    if (isCarryingInitialParams && initData) {
+      params = initData;
+    } else {
+      params = setPropertyValue(params, initDataKey, getInitDataKeyValue());
+    }
+    params = Object.assign(params, formParams, subParams);
+
+    subParamsDel?.forEach((item) => {
+      if (item instanceof Array) {
+        let temporary = params;
+        item.forEach((v, i) => {
+          if (i !== item.length) {
+            temporary = temporary[v];
+          }
+        });
+        delete temporary[item[item.length - 1]];
+        return;
+      }
+      delete params[item];
+    });
+    return params;
+  };
+  /** 处理提交前的方法 */
+  const handleBeforeSubmit = async (params: Record<string, any>) => {
+    const subBeformData = await onSubBefore?.({ params, editRef: formRef });
+    if (subBeformData?.toNext === false) {
+      setTimeout(() => {
+        message.destroy();
+      }, 2000);
+      subBeformData.isShowError &&
+        message.error({
+          content: subBeformData.errorMsg || '网络错误,请重试！',
+          duration: 1,
+          key: 'edit',
+        });
+      subBeformData.isShowSuccess &&
+        message.success({
+          content: subBeformData.successMsg || '操作成功！',
+          duration: 1,
+          key: 'edit',
+        });
+      setOpen(false);
+      throw new Error('手动退出');
+    }
+    if (subBeformData?.params) {
+      return subBeformData?.params;
+    }
+    return params;
+  };
+  /** 处理提交方法 */
+  const handleSubmit = async (params: Record<string, any>) => {
+    let status = 'success';
+    let res: Record<string, any> = {};
+    const defaultMethod =
+      initDataKey && getInitDataKeyValue() !== undefined ? 'PUT' : 'POST';
+    if (onSubmit) {
+      res = await onSubmit(params, {
+        method: subMethod || defaultMethod,
+      });
+      if (!isCodeSuccess(res[code])) {
+        isMessage &&
+          message.error({ content: res[msg] || '操作失败', key: 'edit' });
+        status = 'error';
+      } else {
+        isMessage && message.success({ content: '操作成功！', key: 'edit' });
+      }
+    }
+    const onSubCallbackParams = { params, res, editRef: formRef };
+    onSubCallback?.(onSubCallbackParams);
+    // 失败了 不关闭弹窗
+    status === 'success' && setOpen(false);
+    status === 'success' && isUpdate && tableActionRef?.current?.reload();
+  };
   const handleOk = async () => {
     try {
       setSubmitButton(true);
-      // 格式化时间数据
-      columns.forEach((item) => {
-        const dataIndex = item?.dataIndex;
-        const valueType = (item.valueType as string) || '';
-        if (
-          (valueType.indexOf('date') !== -1 ||
-            valueType.indexOf('time') !== -1) &&
-          dataIndex
-        ) {
-          const val = formRef.current?.getFieldValue(item?.dataIndex || '');
-          if (dataIndex instanceof Array) {
-            const temp = {};
-            let tv: Record<string, any> = temp;
-            dataIndex.forEach((dv, i) => {
-              if (i === dataIndex.length - 1) {
-                tv[dv] = formatDate(val, valueType as any);
-              } else {
-                tv[dv] = {};
-              }
-              tv = tv[dv];
-            });
-            formRef.current?.setFieldsValue(temp);
-          } else if (typeof dataIndex === 'string') {
-            val &&
-              formRef.current?.setFieldsValue({
-                [dataIndex]: formatDate(val, valueType as any),
-              });
-          }
-        }
-      });
       console.log(
         '%c表单参数',
         'color:#0f0;',
         formRef?.current?.getFieldsValue(),
       );
+      // 格式化表格中提交的时间数据
+      handleSubmitDataForTime();
       // 校验
-      formRef?.current?.validateFields().catch((e) => {
-        e?.errorFields?.[0]?.errors?.[0] &&
-          message.error({
-            content: e?.errorFields?.[0]?.errors?.[0],
-            duration: 1,
-          });
-        e?.errorFields?.[0]?.name?.[0] &&
-          formRef.current?.scrollToField(e?.errorFields?.[0]?.name?.[0]);
-        setSubmitButton(false);
-      });
-      await formRef?.current?.validateFields();
+      await handleValidateFields();
       isMessage &&
         message.loading({ content: '正在处理...', duration: 10, key: 'edit' });
-
-      const formParams = formRef?.current?.getFieldsValue();
-      let params = { ...formParams };
-      if (initDataKey && initData?.[initDataKey]) {
-        params[initDataKey] = initData?.[initDataKey];
-      }
-      subParamsDel?.forEach((item) => {
-        if (item instanceof Array) {
-          let temporary = params;
-          item.forEach((v, i) => {
-            if (i !== item.length) {
-              temporary = temporary[v];
-            }
-          });
-          delete temporary[item[item.length - 1]];
-          return;
-        }
-        delete params[item];
-      });
-
-      const subBeformData = await onSubBefore?.({ params, editRef: formRef });
-      if (subBeformData?.toNext === false) {
-        setTimeout(() => {
-          message.destroy();
-        }, 2000);
-        subBeformData.isShowError &&
-          message.error({
-            content: subBeformData.errorMsg || '网络错误,请重试！',
-            duration: 1,
-            key: 'edit',
-          });
-        subBeformData.isShowSuccess &&
-          message.success({
-            content: subBeformData.successMsg || '操作成功！',
-            duration: 1,
-            key: 'edit',
-          });
-        setOpen(false);
-        return;
-      }
-      // 下面两句话 不能动 params先去form复制值 在接收subBeformData的params
-      params = { ...params, ...formRef?.current?.getFieldsValue() };
-      if (subBeformData?.params) {
-        params = subBeformData?.params;
-      }
+      // 获取参数
+      let params: Record<string, any> = await handleBeforeSubmit(
+        getOriginalParams(),
+      );
+      console.log('%c提交参数', 'color:#0f0;', params);
       formatParams && (params = formatParams(params));
-      // if (!onSubmit)  isMessage && message.error({ content: '异常', duration: 1, key: 'edit' });
-      console.log('%c提交参数', 'color:#0f0;', { ...subParams, ...params });
-      let status = 'success';
-      let res: Record<string, any> = {};
-      if (onSubmit) {
-        const submitParams = isCarryingInitialParams
-          ? { ...initData, ...subParams, ...params }
-          : {
-              ...subParams,
-              [initDataKey || '']: initData?.[initDataKey || ''],
-              ...params,
-            };
-        res = await onSubmit(
-          { ...submitParams },
-          {
-            method:
-              subMethod ||
-              // eslint-disable-next-line no-nested-ternary
-              (initDataKey
-                ? initData?.[initDataKey]
-                  ? 'PUT'
-                  : 'POST'
-                : 'POST'),
-          },
-        );
-        if (!isCodeSuccess(res[code])) {
-          isMessage &&
-            message.error({ content: res[msg] || '操作失败', key: 'edit' });
-          status = 'error';
-        } else {
-          isMessage && message.success({ content: '操作成功！', key: 'edit' });
-        }
-      }
-      onSubCallback?.({
-        params: { ...initData, ...subParams, ...params },
-        res,
-        editRef: formRef,
-      });
-      // 失败了 不关闭弹窗
-      status === 'success' && setOpen(false);
-      status === 'success' && isUpdate && tableActionRef?.current?.reload();
+      await handleSubmit(params);
       setSubmitButton(false);
     } catch (error) {
+      console.dir(error);
       message.destroy();
     }
   };
@@ -301,7 +314,7 @@ export default function ProTableEdit<T = any>(props: ProTableEditProps<T>) {
             temporary = temporary[v];
           });
 
-          reserve = { ...reserve, ...k };
+          reserve = Object.assign(reserve, k);
         }
       } else if (
         typeof item.dataIndex === 'string' ||
@@ -319,10 +332,9 @@ export default function ProTableEdit<T = any>(props: ProTableEditProps<T>) {
           }
           temporary = temporary && temporary[v];
         });
-        reserve = { ...reserve, ...k };
+        reserve = Object.assign(reserve, k);
       }
     });
-
     setSubmitButton(false);
     formRef.current?.setFieldsValue(reserve);
   };

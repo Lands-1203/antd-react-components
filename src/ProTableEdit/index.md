@@ -50,34 +50,34 @@ title: ProTableEdit
 
 ## API
 
-| 属性名                    | 描述                                                           | 是否必传 | 类型                                                                                  | 默认值         |
-| ------------------------- | -------------------------------------------------------------- | -------- | ------------------------------------------------------------------------------------- | -------------- |
-| `editActionRef`           | modal 的操作对象 该对象继承了表单的 ActionRef 并扩展了一些方法 | 否       | [editActionRefProps](#editactionrefprops)                                             |                |
-| `cancelText`              | 取消按钮文本                                                   | 否       | `string`                                                                              |                |
-| `columns`                 | 符合 Protable['columns'] 的对象数组                            | 是       | [ProTableEditColumns\<T\>[]](#protableeditcolumnst)                                   |                |
-| `formatParams`            | 提交前格式化参数的函数                                         | 否       | `(params: Record<string, any>) => Record<string, any>`                                |                |
-| `getEditActionRef`        | 获取当前表单的 form 操作对象的函数 (废弃,可以使用)             | 否       | `(ref: React.MutableRefObject<ActionType>) => void`                                   |                |
-| `getEditFormRef`          | 获取当前表单的 form 实例的函数 (废弃,可以使用)                 | 否       | `(ref: React.MutableRefObject<FormInstance<any>>) => void`                            |                |
-| `initData`                | 初始数据，包括编辑主键值和初始数据 (废弃,可以使用)             | 否       | [ProTableEditInitData](#protableeditinitdata)                                         |                |
-| `isCarryingInitialParams` | 是否携带初始参数                                               | 否       | `boolean`                                                                             | `true`         |
-| `isMessage`               | 是否中央提示框                                                 | 否       | `boolean`                                                                             | `true`         |
-| `isUpdate`                | 操作完成后是否更新 table                                       | 否       | `boolean`                                                                             | `true`         |
-| `layout`                  | 表单的横纵排列方式                                             | 否       | [layouProps](#layouprops)                                                             | `"horizontal"` |
-| `modalProps`              | Modal 的配置项                                                 | 否       | [ModalProps](https://ant.design/components/modal-cn#api)                              |                |
-| `modalTitle`              | 模态框标题                                                     | 否       | `string`                                                                              |                |
-| `modalWidth`              | 模态框宽度                                                     | 否       | `ModalProps['width']`                                                                 |                |
-| `okText`                  | 确认按钮文本                                                   | 否       | `string`                                                                              |                |
-| `onCancel`                | 取消操作的回调函数                                             | 否       | `() => void`                                                                          |                |
-| `onSubBefore`             | 提交前调用的异步方法                                           | 否       | [onSubBeforeProps](#onsubbeforeprops)                                                 |                |
-| `onSubCallback`           | 提交完成后的回调函数                                           | 否       | [onSubCallbackProps](#onsubcallbackprops)                                             |                |
-| `onSubmit`                | 点击确认后的请求方法                                           | 否       | [ProTableEditOnSubmit](#protableeditonsubmit)                                         |                |
-| `open`                    | 显示状态                                                       | 是       | `boolean`                                                                             |                |
-| `proTableProps`           | ProTable 的配置项                                              | 否       | [ProTableProps<any, any>](https://procomponents.ant.design/components/table#protable) |                |
-| `setOpen`                 | 控制显示状态的函数                                             | 是       | `React.Dispatch<React.SetStateAction<boolean>>`                                       |                |
-| `subMethod`               | 默认不传，在新增和修改的时候用于改变请求方式                   | 否       | [subMethodProps](#submethodprops)                                                     |                |
-| `subParams`               | 发送请求时携带的额外参数                                       | 否       | `Record<string, any>`                                                                 |                |
-| `subParamsDel`            | 发送请求时删除的表单参数                                       | 否       | `Array<string \| string[]>`                                                           |                |
-| `tableActionRef`          | 表格的 form 操作对象                                           | 否       | `React.MutableRefObject<ActionType \| undefined>`                                     |                |
+| 属性名                    | 描述                                                                                       | 是否必传 | 类型                                                                                  | 默认值         |
+| ------------------------- | ------------------------------------------------------------------------------------------ | -------- | ------------------------------------------------------------------------------------- | -------------- |
+| `editActionRef`           | modal 的操作对象 该对象继承了表单的 ActionRef 并扩展了一些方法                             | 否       | [editActionRefProps](#editactionrefprops)                                             |                |
+| `cancelText`              | 取消按钮文本                                                                               | 否       | `string`                                                                              |                |
+| `columns`                 | 符合 Protable['columns'] 的对象数组                                                        | 是       | [ProTableEditColumns\<T\>[]](#protableeditcolumnst)                                   |                |
+| `formatParams`            | 提交前格式化参数的函数                                                                     | 否       | `(params: Record<string, any>) => Record<string, any>`                                |                |
+| `getEditActionRef`        | 获取当前表单的 form 操作对象的函数 (废弃,可以使用)                                         | 否       | `(ref: React.MutableRefObject<ActionType>) => void`                                   |                |
+| `getEditFormRef`          | 获取当前表单的 form 实例的函数 (废弃,可以使用)                                             | 否       | `(ref: React.MutableRefObject<FormInstance<any>>) => void`                            |                |
+| `initData`                | 初始数据，包括编辑主键值和初始数据 (废弃,可以使用)                                         | 否       | [ProTableEditInitData](#protableeditinitdata)                                         |                |
+| `isCarryingInitialParams` | 是否携带初始参数 (initData 的会将数据复制给表单，表单只会保留存在的表单项数据其他的会丢弃) | 否       | `boolean`                                                                             | `true`         |
+| `isMessage`               | 是否中央提示框                                                                             | 否       | `boolean`                                                                             | `true`         |
+| `isUpdate`                | 操作完成后是否更新 table                                                                   | 否       | `boolean`                                                                             | `true`         |
+| `layout`                  | 表单的横纵排列方式                                                                         | 否       | [layouProps](#layouprops)                                                             | `"horizontal"` |
+| `modalProps`              | Modal 的配置项                                                                             | 否       | [ModalProps](https://ant.design/components/modal-cn#api)                              |                |
+| `modalTitle`              | 模态框标题                                                                                 | 否       | `string`                                                                              |                |
+| `modalWidth`              | 模态框宽度                                                                                 | 否       | `ModalProps['width']`                                                                 |                |
+| `okText`                  | 确认按钮文本                                                                               | 否       | `string`                                                                              |                |
+| `onCancel`                | 取消操作的回调函数                                                                         | 否       | `() => void`                                                                          |                |
+| `onSubBefore`             | 提交前调用的异步方法                                                                       | 否       | [onSubBeforeProps](#onsubbeforeprops)                                                 |                |
+| `onSubCallback`           | 提交完成后的回调函数                                                                       | 否       | [onSubCallbackProps](#onsubcallbackprops)                                             |                |
+| `onSubmit`                | 点击确认后的请求方法                                                                       | 否       | [ProTableEditOnSubmit](#protableeditonsubmit)                                         |                |
+| `open`                    | 显示状态                                                                                   | 是       | `boolean`                                                                             |                |
+| `proTableProps`           | ProTable 的配置项                                                                          | 否       | [ProTableProps<any, any>](https://procomponents.ant.design/components/table#protable) |                |
+| `setOpen`                 | 控制显示状态的函数                                                                         | 是       | `React.Dispatch<React.SetStateAction<boolean>>`                                       |                |
+| `subMethod`               | 默认不传，在新增和修改的时候用于改变请求方式                                               | 否       | [subMethodProps](#submethodprops)                                                     |                |
+| `subParams`               | 发送请求时携带的额外参数                                                                   | 否       | `Record<string, any>`                                                                 |                |
+| `subParamsDel`            | 发送请求时删除的表单参数                                                                   | 否       | `Array<string \| string[]>`                                                           |                |
+| `tableActionRef`          | 表格的 form 操作对象                                                                       | 否       | `React.MutableRefObject<ActionType \| undefined>`                                     |                |
 
 ### editActionRef
 

@@ -7,12 +7,12 @@ import { Base64 } from 'js-base64';
 import React from 'react';
 import { hexToRgb, hslToRgb, rgbToHsl } from './color';
 import {
-    CurryFunc,
-    IListToTree,
-    IToValueEnumProps,
-    ListToTreeReturnProps,
-    copyAddProps,
-    dateTypeProps,
+  CurryFunc,
+  IListToTree,
+  IToValueEnumProps,
+  ListToTreeReturnProps,
+  copyAddProps,
+  dateTypeProps,
 } from './typing';
 const { v4 } = require('uuid');
 const advancedFormat = require('dayjs/plugin/advancedFormat');
@@ -443,11 +443,10 @@ export function IToValueEnum({
   keyType = 'string',
 }: IToValueEnumProps) {
   const map = new Map<any, any>();
-
   const { textString = 'text', valueString = 'value' } = fieldName;
   dict?.forEach((item, i) => {
     if (i < start || i > end) return;
-    let key = item[valueString];
+    let key: any = String(item[valueString]);
     try {
       if (keyType === 'boolean') {
         key = Boolean(item[valueString]);
@@ -544,7 +543,7 @@ export const lookFile = (url: string | undefined) => {
   //获取新窗口距离屏幕顶部的位置
   let top = (winHeight - 1080 / 2) / 2;
   window.open(
-    'http://123.56.117.8:8012/onlinePreview?url=' +
+    'http://lookfile.lantao.work/onlinePreview?url=' +
       encodeURIComponent(Base64.encodeURI(url)),
     '预览',
     'width=' +
@@ -571,4 +570,84 @@ export function downloadFile(fileUrl: string, fileName: string) {
       saveAs(blob, fileName);
     })
     .catch(() => message.error('下载失败'));
+}
+
+type AnyObject = Record<string, any>;
+/**
+ * 根据数组获取对象的值
+ * @param obj 需要获取的对象
+ * @param path 获取的路径
+ * @returns 返回值
+ */
+export function getPropertyValue(
+  obj: AnyObject | undefined,
+  path: (number | string)[] | number | string | undefined,
+): any {
+  if (!obj || path === undefined) return undefined;
+  if (!Array.isArray(path)) return obj[path];
+  let current = obj;
+  for (const key of path) {
+    if (current && typeof current === 'object' && key in current) {
+      current = current[key];
+    } else {
+      return undefined;
+    }
+  }
+  return current;
+}
+/**
+ * 根据数组给对象设置值
+ * @param obj 需要设置的对象
+ * @param path 路径
+ * @param value 设置的值
+ */
+export function setPropertyValue(
+  obj: AnyObject,
+  path: (number | string)[] | number | string | undefined,
+  value: any,
+): AnyObject {
+  let current = obj || {};
+  if (path === undefined) return current;
+  if (Array.isArray(path)) {
+    for (let i = 0; i < path.length - 1; i++) {
+      const key = path[i];
+
+      if (!current[key] || typeof current[key] !== 'object') {
+        current[key] = typeof path[i + 1] === 'number' ? [] : {};
+      }
+
+      current = current[key];
+    }
+
+    const lastKey = path[path.length - 1];
+    current[lastKey] = value;
+  } else {
+    current[path] = value;
+  }
+  return current;
+}
+/**
+ * 使用Proxy深拷贝对象
+ * @param obj 需要复制的对象
+ * @param cache 缓存信息，不需要传递
+ * @returns 返回深拷贝的对象
+ */
+export function deepCopy<T extends Record<any, any> = Record<any, any>>(
+  obj: T,
+  cache = new WeakMap(),
+): T {
+  if (cache.has(obj)) {
+    return cache.get(obj);
+  }
+  const proxyObj = new Proxy(obj, {
+    get(target, key, receiver) {
+      const v = Reflect.get(target, key, receiver);
+      if (typeof v !== 'object') {
+        return v;
+      }
+      return deepCopy(v, cache);
+    },
+  });
+  cache.set(obj, proxyObj);
+  return proxyObj;
 }

@@ -34,7 +34,7 @@ const ModalView: React.FC<ModalViewProps> & ModalViewType = ({
     >
       <embed
         src={
-          'http://123.56.117.8:8012/onlinePreview?url=' +
+          'http://lookfile.lantao.work/onlinePreview?url=' +
           encodeURIComponent(Base64.encodeURI(url))
         }
         style={{

@@ -64,7 +64,7 @@ export default () => {
 
 ```js
 // 建议给menuData赋值为：
-import { utils } from '@lands-react-components';
+import { utils } from '@lands/antd-react-components';
 const { listToTree } = utils;
 const menuData = listToTree({
   data: JSON.parse(JSON.stringify(systemInfo.menus)),
