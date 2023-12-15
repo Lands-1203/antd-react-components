@@ -1,0 +1,34 @@
+name: 发布到npm私有库
+on:
+  push:
+    tags:
+      - 'v*' # 触发条件：以 'v' 开头的标签
+    branches:
+      - master
+
+jobs:
+  publish:
+    runs-on: centos-8
+
+    steps:
+    - name: 签出存储库
+      uses: actions/checkout@v2
+
+    - name: 设置Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16
+
+    - name: 安装依赖项
+      run: npm ci
+
+    - name: Build
+      run: npm run build
+
+    - name: 发布到私有NPM注册表
+      run: |
+        echo "//npm.lantao.work/:_authToken=\${{ secrets.NPM_AUTH_TOKEN }}" > ~/.npmrc
+        echo "@lands:registry=http://npm.lantao.work/" >> ~/.npmrc
+        npm publish
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
