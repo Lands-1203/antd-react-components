@@ -52,7 +52,7 @@ title: ProTableEdit
 
 | 属性名                    | 描述                                                                                       | 是否必传 | 类型                                                                                  | 默认值         |
 | ------------------------- | ------------------------------------------------------------------------------------------ | -------- | ------------------------------------------------------------------------------------- | -------------- |
-| `editActionRef`           | modal 的操作对象 该对象继承了表单的 ActionRef 并扩展了一些方法                             | 否       | [editActionRefProps](#editactionrefprops)                                             |                |
+| `editActionRef`           | modal 的操作对象 该对象继承了表单的 ActionRef 并扩展了一些方法                             | 否       | [editActionRefProps](#editactionref)                                                  |                |
 | `cancelText`              | 取消按钮文本                                                                               | 否       | `string`                                                                              |                |
 | `columns`                 | 符合 Protable['columns'] 的对象数组                                                        | 是       | [ProTableEditColumns\<T\>[]](#protableeditcolumnst)                                   |                |
 | `formatParams`            | 提交前格式化参数的函数                                                                     | 否       | `(params: Record<string, any>) => Record<string, any>`                                |                |

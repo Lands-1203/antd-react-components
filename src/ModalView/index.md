@@ -6,7 +6,7 @@ group: 全局UI组件
 title: ModalView
 ---
 
-# ModalList 表格选择器
+# ModalView 文件查看器
 
 使用 modal 嵌套 kkfile 无需像 [lookFile](/utils#%E5%9C%A8%E7%BA%BF%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6) 打开新的浏览器查看文件
 
@@ -20,16 +20,31 @@ title: ModalView
 
 ## API
 
-| 属性 | 描述                          | 类型       |
-| ---- | ----------------------------- | ---------- |
-| open | 使用该方法打开 Modal 预览文件 | `Function` |
+| 属性       | 描述                          | 类型         |
+| ---------- | ----------------------------- | ------------ |
+| open       | 使用该方法打开 Modal 预览文件 | `boolean`    |
+| url        | 文件地址                      | `string`     |
+| modalProps | 文件地址                      | `ModalProps` |
 
-### open
+### 静态方法
 
-| 属性       | 描述                | 类型         |
-| ---------- | ------------------- | ------------ |
-| url        | 预览地址            | `string`     |
-| ModalProps | antd Modal 框的参数 | `ModalProps` |
+#### `ModalView.open`
+
+```ts
+// 直接打开文件查看;
+ModalView.open(url);
+```
+
+#### `ModalView.remove`
+
+```ts
+// 移除打开的modal DOM
+ModalView.remove();
+```
+
+### ModalProps
+
+antd 的 modal 组件的 props
 
 ## 其他说明
 

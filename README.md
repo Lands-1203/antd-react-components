@@ -3,10 +3,6 @@
 本仓库是一个文档与组件集于一体的仓库，里面包含了一些常用的 react 组件，便于快速开发。
 可以将本项目克隆下来后，自己发布到自己的私有库上。也可以直接访问到本项目的私有库，使用 `npm config set --global @lands:registry=http://npm.lantao.work`，或者在项目中 `.npmrc` 文件写入 `@lands:registry=http://npm.lantao.work/`
 
-## 用法
-
-将项目启动后内部有介绍
-
 ## 相关文档
 
 [组件文档](component.lantao.work)
