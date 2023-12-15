@@ -11,24 +11,27 @@ jobs:
     runs-on: centos-8
 
     steps:
-    - name: 签出存储库
-      uses: actions/checkout@v2
+      - name: 签出存储库
+        uses: actions/checkout@v2
 
-    - name: 设置Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: 16
+      - name: 设置Node版本
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
 
-    - name: 安装依赖项
-      run: npm ci
+      - name: 检测
+        run: npm run doctor
 
-    - name: Build
-      run: npm run build
+      - name: 安装依赖项
+        run: pnpm i
 
-    - name: 发布到私有NPM注册表
-      run: |
-        echo "//npm.lantao.work/:_authToken=\${{ secrets.NPM_AUTH_TOKEN }}" > ~/.npmrc
-        echo "@lands:registry=http://npm.lantao.work/" >> ~/.npmrc
-        npm publish
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+      - name: 打包
+        run: npm run build
+
+      - name: 发布到私有NPM注册表
+        run: |
+          echo "//npm.lantao.work/:_authToken=\${{ secrets.NPM_AUTH_TOKEN }}" > ~/.npmrc
+          echo "@lands:registry=http://npm.lantao.work/" >> ~/.npmrc
+          npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
