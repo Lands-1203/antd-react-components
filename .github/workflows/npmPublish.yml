@@ -13,7 +13,7 @@ jobs:
       - name: Check branch
         run: |
           COMMIT_SHA=$(git rev-parse HEAD)
-          BRANCH_NAME=$(curl --silent --show-error -H "Authorization: token ${{ secrets.TOKEN }}" "https://api.github.com/repos/${{ github.repository }}/commits/${COMMIT_SHA}/branches-where-head" | jq -r '.branches[] | select(.name == "master") | .name')
+          BRANCH_NAME=$(curl --silent --show-error -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" "https://api.github.com/repos/${{ github.repository }}/commits/${COMMIT_SHA}/branches-where-head" | jq -r '.[] | select(.name == "master") | .name')
           if [[ "$BRANCH_NAME" != "master" ]]; then
             echo "This is not master branch. Exiting..."
             exit 1
