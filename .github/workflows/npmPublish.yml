@@ -1,8 +1,6 @@
-name: 发布到npm私有库
+name: 版本发布
 on:
   push:
-    branches:
-      - master
     tags:
       - 'v*' # 触发条件：以 'v' 开头的标签
 
@@ -12,6 +10,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - name: Check branch
+        run: |
+          BRANCH_NAME=$(git branch --contains ${{ github.sha }} | grep -v detached | sed -n 's/^\* //p')
+          if [[ "$BRANCH_NAME" != "master" ]]; then
+            echo "This is not master branch. Exiting..."
+            exit 1
+          fi
       - uses: actions/setup-node@v3
         with:
           node-version: 16
