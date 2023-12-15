@@ -15,10 +15,14 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
+
       - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
           version: 8.10.0
+
+      - name: 安装依赖
+        run: pnpm i
 
       - name: 检测
         run: npm run doctor
