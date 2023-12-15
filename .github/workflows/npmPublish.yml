@@ -19,11 +19,11 @@ jobs:
         with:
           node-version: 16
 
-      - name: 检测
-        run: npm run doctor
-
       - name: 安装依赖项
         run: pnpm i
+
+      - name: 检测
+        run: npm run doctor
 
       - name: 打包
         run: npm run build
