@@ -8,7 +8,7 @@ on:
 
 jobs:
   publish:
-    runs-on: centos-8
+    runs-on: ubuntu-latest
 
     steps:
       - name: 签出存储库
