@@ -30,7 +30,7 @@ jobs:
       - name: 打包
         run: npm run build
 
-      - name: 发布到私有NPM注册表
+      - name: 发布
         run: |
           echo "//npm.lantao.work/:_authToken=\${{ secrets.NPM_AUTH_TOKEN }}" > ~/.npmrc
           echo "@lands:registry=http://npm.lantao.work/" >> ~/.npmrc
