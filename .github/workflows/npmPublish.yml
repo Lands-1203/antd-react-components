@@ -11,22 +11,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v3
         with:
           node-version: 16
-          cache: 'pnpm' # 使用 'pnpm' 缓存
-
-      - name: 设置Node版本
-        uses: actions/setup-node@v3
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
         with:
-          node-version: 16
-
-      - name: 安装依赖项
-        run: pnpm i
+          version: 8.10.0
 
       - name: 检测
         run: npm run doctor
