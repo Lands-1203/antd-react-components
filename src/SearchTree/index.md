@@ -3,7 +3,7 @@ nav:
   title: 组件
   order: 10
 group: 表单组件
-title: SearchTree
+title: SearchTree-搜索树
 ---
 
 # SearchTree 搜索树

@@ -3,7 +3,7 @@ nav:
   title: 组件
   order: 10
 group: 全局UI组件
-title: DynamicTheme
+title: DynamicTheme-主题切换器
 ---
 
 # DynamicTheme 主题切换器

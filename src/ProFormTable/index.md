@@ -3,7 +3,7 @@ nav:
   title: 组件
   order: 10
 group: 表单组件
-title: ProFormTable
+title: ProFormTable-表格选择器
 ---
 
 # ProFormTable 表格选择器

@@ -3,10 +3,10 @@ nav:
   title: 组件
   order: 10
 group: 全局UI组件
-title: ModalList
+title: ModalList-列表弹窗
 ---
 
-# ModalList 表格选择器
+# ModalList 列表弹窗
 
 使用 modal 和 List 组件封装的弹窗列表组件
 

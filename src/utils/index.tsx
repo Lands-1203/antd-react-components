@@ -206,7 +206,7 @@ export const getIcon = (
   icon?: string | React.ReactNode,
   fontSize: number = 20,
   iconPrefixes: string = 'icon-',
-  iconfontUrl = 'https://lands-dev.oss-cn-beijing.aliyuncs.com/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/%E9%A1%B9%E7%9B%AE%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90/iconfont.js',
+  iconfontUrl = 'https://huize-dev.oss-cn-beijing.aliyuncs.com/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/%E9%A1%B9%E7%9B%AE%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90/iconfont.js',
 ): React.ReactNode => {
   const IconFont = createFromIconfontCN({
     // 以下是默认值，也可以按需要指定

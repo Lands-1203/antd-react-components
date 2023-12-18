@@ -3,7 +3,7 @@ nav:
   title: 组件
   order: 1
 group: 全局UI组件
-title: Footer
+title: Footer-页脚
 ---
 
 # Footer 页脚
@@ -66,10 +66,10 @@ export default () => {
 
 ### Props
 
-| 属性        | 描述     | 是否必传 | 类型                                      | 默认值                         |
-| ----------- | -------- | -------- | ----------------------------------------- | ------------------------------ |
+| 属性        | 描述     | 是否必传 | 类型                                      | 默认值                      |
+| ----------- | -------- | -------- | ----------------------------------------- | --------------------------- |
 | companyName | 公司名称 | 否       | `string \| undefined`                     | `lands科技（重庆）有限公司` |
-| links       | 友情链接 | 否       | [linkProps[]](#link-props) \| `undefined` | `links `                       |
+| links       | 友情链接 | 否       | [linkProps[]](#link-props) \| `undefined` | `links `                    |
 
 ```ts
 const links = [

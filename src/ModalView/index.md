@@ -3,7 +3,7 @@ nav:
   title: 组件
   order: 10
 group: 全局UI组件
-title: ModalView
+title: ModalView-文件查看器
 ---
 
 # ModalView 文件查看器

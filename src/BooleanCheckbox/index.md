@@ -3,7 +3,7 @@ nav:
   title: 组件
   order: 10
 group: 表单组件
-title: BooleanCheckbox
+title: BooleanCheckbox-布尔框
 ---
 
 # BooleanCheckbox 布尔框

@@ -3,7 +3,7 @@ nav:
   title: 组件
   order: 10
 group: 全局UI组件
-title: ColorPrimaryPicker
+title: ColorPrimaryPicker-主题色切换器
 ---
 
 # ColorPrimaryPicker 主题色切换器

@@ -3,10 +3,10 @@ nav:
   title: 组件
   order: 3
 group: 全局UI组件
-title: LayouTabs
+title: LayouTabs-快捷标签
 ---
 
-# LayouTabs 页脚
+# LayouTabs 快捷标签
 
 点击路由变化有会自动新增一个`tabs`
 ![案例](./assets/LayouTabs.jpeg)

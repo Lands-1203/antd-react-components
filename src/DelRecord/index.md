@@ -3,10 +3,10 @@ nav:
   title: 组件
   order: 7
 group: 全局UI组件
-title: DelRecord
+title: DelRecord-删除行
 ---
 
-# DelRecord 表格中的删除按钮
+# DelRecord 删除行
 
 ## 使用场景
 

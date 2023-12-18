@@ -12,6 +12,5 @@ export default defineConfig({
     //   theme: 'light',
     // },
   },
-  ssr: {},
   exportStatic: {},
 });

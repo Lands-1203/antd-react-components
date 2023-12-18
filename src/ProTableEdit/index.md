@@ -3,7 +3,7 @@ nav:
   title: 组件
   order: 10
 group: 表单组件
-title: ProTableEdit
+title: ProTableEdit-快捷编辑框
 ---
 
 # ProTableEdit 快捷编辑框

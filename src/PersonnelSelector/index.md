@@ -3,7 +3,7 @@ nav:
   title: 组件
   order: 10
 group: 表单组件
-title: PersonnelSelector
+title: PersonnelSelector-人员选择器
 ---
 
 # PersonnelSelector 人员选择器
