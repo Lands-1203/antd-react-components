@@ -9,32 +9,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-      - name: Check branch
-        run: |
-          COMMIT_SHA=$(git rev-parse HEAD)
-          BRANCH_NAME=$(curl --silent --show-error -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" "https://api.github.com/repos/${{ github.repository }}/commits/${COMMIT_SHA}/branches-where-head" | jq -r '.[] | select(.name == "master") | .name')
-          if [[ "$BRANCH_NAME" != "master" ]]; then
-            echo "这不是主分支。正在退出..."
-            exit 1
-          fi
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v2
         with:
-          node-version: 16
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
+          version: 6.32.9
+      - uses: actions/setup-node@v4
         with:
-          version: 8.10.0
-
-      - name: 安装依赖
-        run: pnpm i
+          node-version: '16'
+          cache: 'pnpm'
+      - run: pnpm install
 
       - name: 检测
         run: npm run doctor
-
-      - name: 打包
-        run: npm run build
 
       - name: 发布
         run: |
