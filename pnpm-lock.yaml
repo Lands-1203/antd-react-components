@@ -13798,7 +13798,7 @@ packages:
       querystring-es3: registry.npmmirror.com/querystring-es3@0.2.1
       readable-stream: registry.npmmirror.com/readable-stream@2.3.8
       stream-browserify: registry.npmmirror.com/stream-browserify@2.0.2
-      stream-http: registry.npmmirror.com/stream-http@2.8.3
+      stream-https: registry.npmmirror.com/stream-http@2.8.3
       string_decoder: registry.npmmirror.com/string_decoder@1.3.0
       timers-browserify: registry.npmmirror.com/timers-browserify@2.0.12
       tty-browserify: registry.npmmirror.com/tty-browserify@0.0.0
@@ -19556,7 +19556,7 @@ packages:
     version: 1.0.0
     engines: {node: '>=0.10.0'}
     dependencies:
-      prepend-http: registry.npmmirror.com/prepend-http@1.0.4
+      prepend-https: registry.npmmirror.com/prepend-http@1.0.4
     dev: false
 
   registry.npmmirror.com/url@0.11.1:

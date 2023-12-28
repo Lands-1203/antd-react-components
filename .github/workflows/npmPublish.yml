@@ -39,7 +39,7 @@ jobs:
       - name: 发布
         run: |
           echo "//npm.lantao.work/:_authToken=\${{ secrets.NPM_AUTH_TOKEN }}" > ~/.npmrc
-          echo "@lands:registry=http://npm.lantao.work/" >> ~/.npmrc
+          echo "@lands:registry=https://npm.lantao.work/" >> ~/.npmrc
           npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}

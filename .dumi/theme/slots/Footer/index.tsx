@@ -4,12 +4,7 @@ import React from 'react';
 export default () => {
   return (
     <Footer
-      bottom={
-        <>
-          Copyright © 2023-present
-          <br /> lands科技（重庆）有限公司
-        </>
-      }
+      bottom={<>Copyright © 2023-present 兰涛</>}
       columns={[
         {
           title: '相关资源',
@@ -45,100 +40,64 @@ export default () => {
           ],
         },
         {
-          title: '相关资源',
+          title: '友情链接',
           items: [
             {
-              title: 'Ant Design Pro',
-              url: 'https://pro.ant.design',
+              title: '源码地址',
+              url: 'https://github.com/Lands-1203/antd-react-components',
               openExternal: true,
             },
             {
-              title: 'Ant Design Pro Components',
-              url: 'https://procomponents.ant.design',
+              title: '文件预览服务',
+              url: 'https://lookfile.lantao.work/index',
               openExternal: true,
             },
             {
-              title: 'Umi',
-              description: 'React 应用开发框架',
-              url: 'https://umijs.org',
-              openExternal: true,
-            },
-            {
-              title: 'Dumi',
-              description: '组件/文档研发工具',
-              url: 'https://d.umijs.org',
-              openExternal: true,
-            },
-            {
-              title: 'qiankun',
-              description: '微前端框架',
-              url: 'https://qiankun.umijs.org',
+              title: 'npm私有库服务',
+              url: 'https://npm.lantao.work',
               openExternal: true,
             },
           ],
         },
         {
-          title: '相关资源',
+          title: '博主地址',
           items: [
             {
-              title: 'Ant Design Pro',
-              url: 'https://pro.ant.design',
+              title: '个人博客',
+              url: 'https://lantao.work',
               openExternal: true,
             },
             {
-              title: 'Ant Design Pro Components',
-              url: 'https://procomponents.ant.design',
+              title: '掘金主页',
+              url: 'https://juejin.cn/user/2186291109706109',
               openExternal: true,
             },
             {
-              title: 'Umi',
-              description: 'React 应用开发框架',
-              url: 'https://umijs.org',
+              title: 'GitHub个人主页',
+              url: 'https://github.com/Lands-1203',
               openExternal: true,
             },
             {
-              title: 'Dumi',
-              description: '组件/文档研发工具',
-              url: 'https://d.umijs.org',
-              openExternal: true,
-            },
-            {
-              title: 'qiankun',
-              description: '微前端框架',
-              url: 'https://qiankun.umijs.org',
+              title: '语雀主页',
+              description: '前端知识点总结',
+              url: 'https://www.yuque.com/lands-rolne',
               openExternal: true,
             },
           ],
         },
         {
-          title: '相关资源',
+          title: '其他项目',
           items: [
             {
-              title: 'Ant Design Pro',
-              url: 'https://pro.ant.design',
+              title: '微前端框架项目',
+              description: '主应用',
+              url: 'https://master.lantao.work',
               openExternal: true,
             },
             {
-              title: 'Ant Design Pro Components',
-              url: 'https://procomponents.ant.design',
-              openExternal: true,
-            },
-            {
-              title: 'Umi',
-              description: 'React 应用开发框架',
-              url: 'https://umijs.org',
-              openExternal: true,
-            },
-            {
-              title: 'Dumi',
-              description: '组件/文档研发工具',
-              url: 'https://d.umijs.org',
-              openExternal: true,
-            },
-            {
-              title: 'qiankun',
-              description: '微前端框架',
-              url: 'https://qiankun.umijs.org',
+              title: '微前端框架项目',
+              description: '子应用',
+              url: 'https://micro.lantao.work',
               openExternal: true,
             },
           ],

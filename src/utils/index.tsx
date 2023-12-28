@@ -543,7 +543,7 @@ export const lookFile = (url: string | undefined) => {
   //获取新窗口距离屏幕顶部的位置
   let top = (winHeight - 1080 / 2) / 2;
   window.open(
-    'http://lookfile.lantao.work/onlinePreview?url=' +
+    'https://lookfile.lantao.work/onlinePreview?url=' +
       encodeURIComponent(Base64.encodeURI(url)),
     '预览',
     'width=' +
