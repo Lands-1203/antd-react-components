@@ -12,5 +12,5 @@ title: Git提交规则
 📝 docs(compiler): 添加一些文档
 🌷 UI(compiler): 更好的样式
 🏰 chore(compiler): 对脚手架进行了一些更改
-🌐 locale(compiler): 国际化
+🌐 locale(compiler): 国际化 
 ```

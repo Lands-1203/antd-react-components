@@ -5,8 +5,8 @@
 
 ## 相关文档
 
-[组件文档](component.lantao.work)
-[组件私有库](npm.lantao.work)
+[组件文档](https://procomponents.lantao.work/)
+[组件私有库](https://npm.lantao.work)
 
 ## Development
 
