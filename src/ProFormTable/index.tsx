@@ -95,7 +95,7 @@ export default function ProFormTable<
                 }) || [];
             } else {
               const set = new Set(rowKeys.concat(selectedRowKeys || []));
-              newKeys = Array.from(set);
+              newKeys = Array.from(set) as stringOrNumber[];
             }
           } else if (type === 'invert') {
             // 反选当前页
@@ -104,7 +104,7 @@ export default function ProFormTable<
             const otherRowKeys = (selectedRowKeys || []).filter((Item) => {
               return !currentTableData.includes(Item);
             });
-            newKeys = otherRowKeys.concat(rowKeys);
+            newKeys = otherRowKeys.concat(rowKeys as stringOrNumber[]);
           }
           setSelectedRowKeys(newKeys);
           if (returnType === 'array') {

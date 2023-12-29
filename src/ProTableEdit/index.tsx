@@ -4,10 +4,10 @@ import type { FormInstance } from 'antd';
 import { Button, Modal, message } from 'antd';
 import React, { useEffect, useImperativeHandle, useRef, useState } from 'react';
 import {
-    formatDate,
-    getPropertyValue,
-    isCodeSuccess,
-    setPropertyValue,
+  formatDate,
+  getPropertyValue,
+  isCodeSuccess,
+  setPropertyValue,
 } from '../utils';
 import './styles.less';
 import { ProTableEditProps, editActionRefProps } from './typing';
@@ -161,7 +161,7 @@ export default function ProTableEdit<T = any>(props: ProTableEditProps<T>) {
         if (dataIndex instanceof Array) {
           const temp = {};
           let tv: Record<string, any> = temp;
-          dataIndex.forEach((dv, i) => {
+          dataIndex.forEach((dv: any, i) => {
             if (i === dataIndex.length - 1) {
               tv[dv] = formatDate(val, valueType as any);
             } else {
@@ -303,7 +303,7 @@ export default function ProTableEdit<T = any>(props: ProTableEditProps<T>) {
         } else if (typeof item.dataIndex === 'object') {
           let temporary: Record<string, any> = {};
           const k = temporary;
-          item.dataIndex.forEach((v, i) => {
+          item.dataIndex.forEach((v: any, i) => {
             if (i === (item.dataIndex as any[]).length - 1) {
               temporary[v] = formRef.current?.getFieldValue(
                 item.dataIndex as Array<string | number>,
@@ -324,7 +324,7 @@ export default function ProTableEdit<T = any>(props: ProTableEditProps<T>) {
       } else if (typeof item.dataIndex === 'object') {
         let temporary: Record<string, any> = {};
         const k = temporary;
-        item.dataIndex.forEach((v, i) => {
+        item.dataIndex.forEach((v: any, i) => {
           if (i === (item.dataIndex as any[]).length - 1) {
             temporary && (temporary[v] = undefined);
           } else {

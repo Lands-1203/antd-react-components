@@ -123,7 +123,7 @@ export default function SearchTree(props: SearchTreeProps) {
       />
       <Tree
         onExpand={(expandedKeys) => {
-          setExpandedKeys(expandedKeys);
+          setExpandedKeys(expandedKeys as any);
           setAutoExpandParent(false);
         }}
         expandedKeys={expandedKeys}
