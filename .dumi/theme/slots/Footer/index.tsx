@@ -4,7 +4,21 @@ import React from 'react';
 export default () => {
   return (
     <Footer
-      bottom={<>Copyright © 2023-present 兰涛</>}
+      bottom={
+        <>
+          © 2023 - 2023 😊&nbsp;
+          <a target="_blank" href="https://lantao.work">
+            兰涛
+          </a>
+          <br />
+          <a
+            target="_blank"
+            href="https://beian.miit.gov.cn/#/Integrated/recordQuery"
+          >
+            渝ICP备2023017609号
+          </a>
+        </>
+      }
       columns={[
         {
           title: '相关资源',
