@@ -1,7 +1,7 @@
 import {
-    ModalList,
-    ModalView,
-    modalListRefType,
+  ModalList,
+  ModalView,
+  modalListRefType,
 } from '@lands/antd-react-components';
 import { downloadFile } from '@lands/antd-react-components/utils';
 import { Button, List } from 'antd';
@@ -13,7 +13,7 @@ export default () => {
   useEffect(() => {
     fileRef.current?.setDataSource([
       {
-        url: 'https://lands-dev.oss-cn-beijing.aliyuncs.com/test/ChatGPT%E6%B3%A8%E5%86%8C%E6%95%99%E7%A8%8B.docx',
+        url: 'https://static.lantao.work/assets/ChatGPT%E6%B3%A8%E5%86%8C%E6%95%99%E7%A8%8B.docx',
         name: 'chatGpt.docx',
         id: '1',
       },

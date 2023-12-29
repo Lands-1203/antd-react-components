@@ -564,7 +564,9 @@ export const lookFile = (url: string | undefined) => {
  * @param fileName 文件名称.后缀
  */
 export function downloadFile(fileUrl: string, fileName: string) {
-  fetch(fileUrl)
+  fetch(fileUrl, {
+    mode: 'no-cors',
+  })
     .then((response) => response.blob())
     .then((blob) => {
       saveAs(blob, fileName);
