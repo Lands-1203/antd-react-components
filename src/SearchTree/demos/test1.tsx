@@ -1,9 +1,9 @@
 import {
-    SearchListDataProps,
-    SearchTree,
-    SearchTreeDataProps,
-    utils,
-} from '@lands/antd-react-components';
+  SearchListDataProps,
+  SearchTree,
+  SearchTreeDataProps,
+  utils,
+} from '@lands-pro/antd-react-components';
 import { message } from 'antd';
 import React, { useEffect, useState } from 'react';
 const { listToTree } = utils;

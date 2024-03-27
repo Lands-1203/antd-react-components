@@ -1,4 +1,7 @@
-import { ProFormTable, ProFormTableProps } from '@lands/antd-react-components';
+import {
+  ProFormTable,
+  ProFormTableProps,
+} from '@lands-pro/antd-react-components';
 import { Button, message } from 'antd';
 import React, { useState } from 'react';
 export default () => {

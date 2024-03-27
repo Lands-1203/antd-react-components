@@ -9,8 +9,8 @@
     "baseUrl": "./",
     "paths": {
       "@@/*": [".dumi/tmp/*"],
-      "@lands/antd-react-components": ["src"],
-      "@lands/antd-react-components/*": ["src/*", "*"]
+      "@lands-pro/antd-react-components": ["src"],
+      "@lands-pro/antd-react-components/*": ["src/*", "*"]
     }
   },
   "include": [".dumirc.ts", "src/**/*"]

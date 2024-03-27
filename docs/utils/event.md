@@ -10,7 +10,7 @@ title: 全局监听
 ## 创建一个监听者模式
 
 ```ts
-import { getNewEmitter3 } from '@lands/antd-react-components/dist/event';
+import { getNewEmitter3 } from '@lands-pro/antd-react-components/dist/event';
 // 定义全局监听者的类型key
 type GLOBAL_EVENT_Type = {
   '@lands_tabs_showGlobalTabBar': boolean;

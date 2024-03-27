@@ -1,4 +1,4 @@
-import { DynamicTheme } from '@lands/antd-react-components';
+import { DynamicTheme } from '@lands-pro/antd-react-components';
 import { message } from 'antd';
 import React from 'react';
 

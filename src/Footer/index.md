@@ -20,7 +20,7 @@ title: Footer-页脚
 
 ```jsx
 import React from 'react';
-import { Footer } from '@lands/antd-react-components';
+import { Footer } from '@lands-pro/antd-react-components';
 export default () => {
   return <Footer />;
 };
@@ -30,7 +30,7 @@ export default () => {
 
 ```jsx
 import React from 'react';
-import { Footer } from '@lands/antd-react-components';
+import { Footer } from '@lands-pro/antd-react-components';
 import { BugOutlined } from '@ant-design/icons';
 
 export default () => {
@@ -45,7 +45,7 @@ export default () => {
           blankTarget: true,
         },
         {
-          key: 'hz',
+          key: 'lands',
           title: <BugOutlined />,
           href: '/',
           blankTarget: true,
@@ -80,7 +80,7 @@ const links = [
     blankTarget: true,
   },
   {
-    key: 'hz',
+    key: 'lands',
     title: <GithubOutlined />,
     href: '/',
     blankTarget: true,

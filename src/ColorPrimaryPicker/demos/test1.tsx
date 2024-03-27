@@ -1,4 +1,4 @@
-import { ColorPrimaryPicker } from '@lands/antd-react-components';
+import { ColorPrimaryPicker } from '@lands-pro/antd-react-components';
 import React, { useState } from 'react';
 export default () => {
   const [rgb, setRgb] = useState('');

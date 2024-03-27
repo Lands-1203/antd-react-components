@@ -1,4 +1,7 @@
-import { ProTableEdit, ProTableEditColumns } from '@lands/antd-react-components';
+import {
+  ProTableEdit,
+  ProTableEditColumns,
+} from '@lands-pro/antd-react-components';
 import { Button } from 'antd';
 import React, { useState } from 'react';
 export default () => {

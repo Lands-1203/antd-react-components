@@ -1,7 +1,7 @@
 {
-  "name": "@lands/antd-react-components",
-  "version": "1.0.4",
-  "description": "lands-后台开发常用的react组件",
+  "name": "@lands-pro/antd-react-components",
+  "version": "1.0.0",
+  "description": "Lands Pro-后台开发常用的react组件",
   "license": "MIT",
   "author": {
     "name": "兰涛",

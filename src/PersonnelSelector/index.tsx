@@ -1,4 +1,7 @@
-import { ProFormTable, ProFormTableProps } from '@lands/antd-react-components';
+import {
+  ProFormTable,
+  ProFormTableProps,
+} from '@lands-pro/antd-react-components';
 import { Button, Modal, Select, SelectProps } from 'antd';
 import React, { useEffect, useState } from 'react';
 type stringOrNumber = string | number;

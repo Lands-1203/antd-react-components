@@ -239,7 +239,7 @@ tips: 如果`onSubmit` 属于`(() => Promise<any>)`并且返回数据不符合[�
 
 #### 新建变量
 
-在使用`ProTableEdit`中，我们会声明几个固定格式的变量：
+在使用`ProTableEdit`中，我们会声明几个固定格式的变量：（不推荐使用 state 变量控制组件，推荐使用[editActionRef](#editactionref)方式）
 
 - `const [initData, setInitData] = useState<Record<string,any>>();`控制编辑请求的初始数据。
 - `const [openEdit, setOpenEdit] = useState(false);`控制编辑框是否打开。
@@ -251,7 +251,7 @@ tips: 如果`onSubmit` 属于`(() => Promise<any>)`并且返回数据不符合[�
 
 ## Tips
 
-- 如果配置了[响应拦截器](#响应拦截器)，可直接使用 `import { isSuccessCode } from '@lands/antd-react-components/dist/utils';` `isSuccessCode(res.bizCode)`判断请求是否成功;
+- 如果配置了[响应拦截器](#响应拦截器)，可直接使用 `import { isSuccessCode } from '@lands-pro/antd-react-components/dist/utils';` `isSuccessCode(res.bizCode)`判断请求是否成功;
 - 如果配置[请求拦截器](#请求处理)，请注意不要影响 `ProTableEdit` 以外的 `POST|PUT` 请求。请注意兼容性配置。
 - 如果需要表单简单的联动，需要自己声明 `useState` 变量。去控制`columns`
 - 如果`subMethod`没有传递值。`data[dataKey]`有值，`onSubmit`则会使用 PUT，方式发起请求；`data[dataKey]`如果没有值则会使用 POST 发起请求。组件不会接收 `onSubmit` 自带的请求方式。因为在实际开发中，编辑需要带 ID 使用 PUT 。新增无记录 ID 使用 POST

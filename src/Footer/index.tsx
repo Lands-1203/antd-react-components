@@ -16,7 +16,7 @@ const Footer: React.FC<FooterProps> = (props) => {
         blankTarget: true,
       },
       {
-        key: 'hz',
+        key: 'lands',
         title: <GithubOutlined />,
         href: '/',
         blankTarget: true,

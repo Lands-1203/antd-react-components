@@ -1,4 +1,4 @@
-import { utils } from '@lands/antd-react-components';
+import { utils } from '@lands-pro/antd-react-components';
 import { Select } from 'antd';
 import React from 'react';
 import iconJson from '../assets/iconfont.json';

@@ -1,12 +1,12 @@
 import { PlusOutlined } from '@ant-design/icons';
 import { ActionType, ProTable } from '@ant-design/pro-components';
 import {
-    ProTableEdit,
-    ProTableEditColumns,
-    editActionRefProps,
-    utils,
-} from '@lands/antd-react-components';
-import { VPhone, VPwd } from '@lands/antd-react-components/validator';
+  ProTableEdit,
+  ProTableEditColumns,
+  editActionRefProps,
+  utils,
+} from '@lands-pro/antd-react-components';
+import { VPhone, VPwd } from '@lands-pro/antd-react-components/validator';
 import { Button, Input } from 'antd';
 import React, { useRef } from 'react';
 interface getMapProps {

@@ -1,7 +1,7 @@
 import {
-    PersonnelSelector,
-    personnelSelectorProps,
-} from '@lands/antd-react-components';
+  PersonnelSelector,
+  personnelSelectorProps,
+} from '@lands-pro/antd-react-components';
 import { Button, Form, message } from 'antd';
 import React, { useState } from 'react';
 export default () => {

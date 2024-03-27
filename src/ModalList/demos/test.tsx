@@ -2,8 +2,8 @@ import {
   ModalList,
   ModalView,
   modalListRefType,
-} from '@lands/antd-react-components';
-import { downloadFile } from '@lands/antd-react-components/utils';
+} from '@lands-pro/antd-react-components';
+import { downloadFile } from '@lands-pro/antd-react-components/utils';
 import { Button, List } from 'antd';
 import React, { useEffect, useRef } from 'react';
 type dataProps = { url: string; name: string; id: string };

@@ -68,7 +68,7 @@ export default function ProFormTable<
           : undefined
       }
       options={false}
-      tableClassName="hz-proform-table"
+      tableClassName="lands-proform-table"
       rowSelection={{
         type: selectionType,
         selections: [Table.SELECTION_NONE, Table.SELECTION_INVERT],

@@ -17,7 +17,7 @@ import {
   VUserName,
   VPwd,
   VEmail,
-} from '@lands/antd-react-components/dist/validator';
+} from '@lands-pro/antd-react-components/dist/validator';
 
 const columns: ProTableEditColumns<SYSAPI.SysUser>[] = [
   {
@@ -60,7 +60,7 @@ const columns: ProTableEditColumns<SYSAPI.SysUser>[] = [
 ## 添加一个校验器
 
 ```ts
-import { craeteValidator } from '@lands/antd-react-components/dist/validator';
+import { craeteValidator } from '@lands-pro/antd-react-components/dist/validator';
 
 const testValidator = craeteValidator(/^1[3-9]\d{9}$/, '手机号格式不正确');
 const columns: ProTableEditColumns<SYSAPI.SysUser>[] = [

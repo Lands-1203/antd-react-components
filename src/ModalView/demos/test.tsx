@@ -1,4 +1,4 @@
-import { ModalView } from '@lands/antd-react-components';
+import { ModalView } from '@lands-pro/antd-react-components';
 import { Button, Input } from 'antd';
 import React, { useState } from 'react';
 

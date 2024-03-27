@@ -1,8 +1,8 @@
 import {
-    ProTableEdit,
-    ProTableEditColumns,
-    editActionRefProps,
-} from '@lands/antd-react-components';
+  ProTableEdit,
+  ProTableEditColumns,
+  editActionRefProps,
+} from '@lands-pro/antd-react-components';
 import { Button } from 'antd';
 import React, { useRef } from 'react';
 export default () => {

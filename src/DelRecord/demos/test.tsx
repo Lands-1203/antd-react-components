@@ -1,5 +1,5 @@
 import { ActionType, ProColumns, ProTable } from '@ant-design/pro-components';
-import { DelRecord } from '@lands/antd-react-components';
+import { DelRecord } from '@lands-pro/antd-react-components';
 import React, { useRef } from 'react';
 // 模拟网络请求
 const deleteApprovalTemplate = async (params: any, option: any) => {

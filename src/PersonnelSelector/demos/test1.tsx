@@ -1,4 +1,4 @@
-import { PersonnelSelector } from '@lands/antd-react-components';
+import { PersonnelSelector } from '@lands-pro/antd-react-components';
 import { Button, Form, message } from 'antd';
 import React from 'react';
 export default () => {

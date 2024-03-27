@@ -22,7 +22,7 @@ order: 1
 import React, { useState } from 'react';
 import ReactJson from 'react-json-view';
 
-import { listToMap } from '@lands/antd-react-components/dist/utils';
+import { listToMap } from '@lands-pro/antd-react-components/dist/utils';
 const data = [
   { id: 'id1', a: 1, b: 2, c: 3, d: 4, children: [] },
   { id: 'id2', a: 1, b: 2, c: 3, d: 4, children: [] },
@@ -53,7 +53,7 @@ export default () => {
 import React, { useState } from 'react';
 import ReactJson from 'react-json-view';
 
-import { listToMap } from '@lands/antd-react-components/dist/utils';
+import { listToMap } from '@lands-pro/antd-react-components/dist/utils';
 
 type returnMapType = {
   a: number;
@@ -121,7 +121,7 @@ export default () => {
 import React, { useState } from 'react';
 import ReactJson from 'react-json-view';
 
-import { treeToMap } from '@lands/antd-react-components/dist/utils';
+import { treeToMap } from '@lands-pro/antd-react-components/dist/utils';
 
 const data = [
   {
@@ -156,7 +156,7 @@ export default () => {
 import React, { useState } from 'react';
 import ReactJson from 'react-json-view';
 
-import { treeToMap } from '@lands/antd-react-components/dist/utils';
+import { treeToMap } from '@lands-pro/antd-react-components/dist/utils';
 
 const data = [
   {
@@ -215,7 +215,7 @@ list 对象数组转树 兼容多棵树 多个顶点情况，该方法会影响�
 import React, { useState } from 'react';
 import ReactJson from 'react-json-view';
 
-import { listToTree } from '@lands/antd-react-components/dist/utils';
+import { listToTree } from '@lands-pro/antd-react-components/dist/utils';
 
 const data = [
   { id: 1, a: 1, b: 2, c: 3, d: 4, parentId: '-1' },
@@ -254,7 +254,7 @@ export default () => {
 import React, { useState } from 'react';
 import ReactJson from 'react-json-view';
 
-import { listToTree } from '@lands/antd-react-components/dist/utils';
+import { listToTree } from '@lands-pro/antd-react-components/dist/utils';
 
 const data = [
   { userId: 'userid1', name: 'lantao', pid: '-1' },
@@ -338,7 +338,7 @@ export default () => {
 #### 基本使用
 
 ```ts
-import { utils } from '@lands/antd-react-components';
+import { utils } from '@lands-pro/antd-react-components';
 const { deepCopy } = utils;
 let obj = { a: 1, b: 2, d: { E: {} } };
 obj.d.E = obj;
@@ -361,7 +361,7 @@ IToValueEnum 将数组转换成 map，便于用在下拉选择框等组件上
 #### 基本使用
 
 ```ts
-import { utils } from '@lands/antd-react-components';
+import { utils } from '@lands-pro/antd-react-components';
 const { IToValueEnum } = utils;
 let dict = [{ id: 1, name: 'lantao',tel:'15723185734' },{ id: 2, name: 'lantao2',tel:'15723185731' }];
 console.log(IToValueEnum({dict,fieldName:{textString:'name',valueString:'id'}}); // 输出：Map({1:{ id: 1, name: 'lantao',tel:'15723185734' },2:{ id: 2, name: 'lantao2',tel:'15723185731' }})
@@ -390,7 +390,7 @@ copyAndAdd 会对原数据影响
 #### 基本使用
 
 ```ts
-import { utils } from '@lands/antd-react-components';
+import { utils } from '@lands-pro/antd-react-components';
 const { copyAndAdd } = utils;
 let obj = { id: 1, name: 'lantao',tel:'15723185734' };
 console.log(copyAndAdd(obj,{ oldField: ['id','name']; field: string['value','label'] })); // 输出：{ id: 1, name: 'lantao',value: 1, label: 'lantao',tel:'15723185734' }
@@ -410,7 +410,7 @@ copyAndAdd2 会对原数据影响，仅仅返回 field 描述了的数据
 #### 基本使用
 
 ```ts
-import { utils } from '@lands/antd-react-components';
+import { utils } from '@lands-pro/antd-react-components';
 const { copyAndAdd2 } = utils;
 let obj = { id: 1, name: 'lantao',tel:'15723185734' };
 console.log(copyAndAdd2(obj,{ oldField: ['id','id','name']; field: string['value','key','label'] })); // 输出：{ value: 1, key: 1, label: 'lantao' }
@@ -432,7 +432,7 @@ console.log(copyAndAdd2(obj,{ oldField: ['id','id','name']; field: string['value
 #### 基本使用
 
 ```jsx
-import { formatDate } from '@lands/antd-react-components/dist/utils';
+import { formatDate } from '@lands-pro/antd-react-components/dist/utils';
 import dayjs from 'dayjs';
 const now = dayjs();
 
@@ -505,7 +505,7 @@ export type dateTypeProps =
 #### 基本使用
 
 ```jsx
-import { returnTag } from '@lands/antd-react-components/dist/utils';
+import { returnTag } from '@lands-pro/antd-react-components/dist/utils';
 const value = '1';
 const obj = { 1: '男', 2: '女' };
 const label = obj[value];
@@ -519,7 +519,7 @@ export default () => {
 #### 进阶使用
 
 ```jsx
-import { returnTag } from '@lands/antd-react-components/dist/utils';
+import { returnTag } from '@lands-pro/antd-react-components/dist/utils';
 const value = '2';
 const obj = { 1: '男', 2: '女' };
 const label = obj[value];
@@ -591,7 +591,7 @@ switch (String(value)) {
 #### 基本使用
 
 ```jsx
-import { adjustColor } from '@lands/antd-react-components/dist/utils';
+import { adjustColor } from '@lands-pro/antd-react-components/dist/utils';
 
 export default () => {
   return (
@@ -622,7 +622,7 @@ export default () => {
 #### 基本使用
 
 ```ts
-import { curry } from '@lands/antd-react-components/dist/utils';
+import { curry } from '@lands-pro/antd-react-components/dist/utils';
 const sum = (a: number, b: number, c: number) => a + b + c;
 const currySum = curry(sum, 1, 2);
 currySum(3); //6
@@ -650,7 +650,7 @@ curry(sum, 1)(2)(3); //6
 #### 基本使用
 
 ```jsx
-import { sha256Hash } from '@lands/antd-react-components/dist/utils';
+import { sha256Hash } from '@lands-pro/antd-react-components/dist/utils';
 import { useState, useEffect } from 'react';
 export default () => {
   const [pwd, setPwd] = useState();
@@ -686,7 +686,7 @@ export default () => {
 ```jsx
 import React, { useState } from 'react';
 import ReactJson from 'react-json-view';
-import { getIcon } from '@lands/antd-react-components/dist/utils';
+import { getIcon } from '@lands-pro/antd-react-components/dist/utils';
 
 export default () => {
   return <>{getIcon('icon-bank')}</>;
@@ -698,7 +698,7 @@ export default () => {
 ```jsx
 import React, { useState } from 'react';
 import ReactJson from 'react-json-view';
-import { getIcon } from '@lands/antd-react-components/dist/utils';
+import { getIcon } from '@lands-pro/antd-react-components/dist/utils';
 const icon = getIcon(
   'icon-bank',
   40,
@@ -732,7 +732,7 @@ iconfontUrl 的默认值可能会根据版本变化而变化，目前是在/icon
 
 ```jsx
 import React, { useState } from 'react';
-import { getUUID } from '@lands/antd-react-components/dist/utils';
+import { getUUID } from '@lands-pro/antd-react-components/dist/utils';
 export default () => {
   const [uuid, setUUid] = useState(getUUID());
   return <>{uuid}</>;
@@ -753,14 +753,14 @@ export default () => {
 #### 基本使用
 
 ```jsx
-import { dynamicNavTheme } from '@lands/antd-react-components/dist/utils';
+import { dynamicNavTheme } from '@lands-pro/antd-react-components/dist/utils';
 export default () => {
   return <>{dynamicNavTheme()}</>;
 };
 ```
 
 ```jsx
-import { dynamicNavTheme } from '@lands/antd-react-components/dist/utils';
+import { dynamicNavTheme } from '@lands-pro/antd-react-components/dist/utils';
 export default () => {
   return <>{dynamicNavTheme([12, 0, 0], [13, 0, 0])}</>;
 };
@@ -779,7 +779,7 @@ export default () => {
 系统的默认登录地址在`'/user/login'`，如果系统没有将登录组件放在此地址下，则需要自己在项目中单独导出变量供全局使用。建议登录地址放在 user/login 目录下，如果不放在该目录下，也需要创建变量全局管理。
 
 ```ts
-import { globalPath } from '@lands/antd-react-components/dist/utils';
+import { globalPath } from '@lands-pro/antd-react-components/dist/utils';
 console.log(globalPath.loginPath); // '/user/login'
 console.log(globalPath.loginPathRedirect); // '/user/login?redirect=xxxxx' 当前页面重定向当登录页的地址
 ```
@@ -787,7 +787,7 @@ console.log(globalPath.loginPathRedirect); // '/user/login?redirect=xxxxx' 当�
 ### 获取当前环境是否处于开发模式
 
 ```ts
-import { isDev } from '@lands/antd-react-components/dist/utils';
+import { isDev } from '@lands-pro/antd-react-components/dist/utils';
 
 console.log(isDev); // true||false
 ```
@@ -802,7 +802,7 @@ console.log(isDev); // true||false
 #### 基本使用
 
 ```ts
-import { lookFile } from '@lands/antd-react-components/dist/utils';
+import { lookFile } from '@lands-pro/antd-react-components/dist/utils';
 lookFile('https://xxx.com/1.pdf');
 ```
 
@@ -820,7 +820,7 @@ lookFile('https://xxx.com/1.pdf');
 #### 基本使用
 
 ```ts
-import { downloadFile } from '@lands/antd-react-components/dist/utils';
+import { downloadFile } from '@lands-pro/antd-react-components/dist/utils';
 downloadFile('https://xxx.com/1.pdf', '1.pdf');
 ```
 
@@ -839,7 +839,7 @@ downloadFile('https://xxx.com/1.pdf', '1.pdf');
 #### 基本使用
 
 ```ts
-import { isCodeSuccess } from '@lands/antd-react-components/dist/utils';
+import { isCodeSuccess } from '@lands-pro/antd-react-components/dist/utils';
 const res = await system.getUserInfo();
 isCodeSuccess(res.bizCode);
 ```

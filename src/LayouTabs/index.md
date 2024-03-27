@@ -21,7 +21,7 @@ title: LayouTabs-快捷标签
 
 ```tsx
 import { LaptopOutlined } from '@ant-design/icons';
-import { LayouTabs } from '@lands/antd-react-components';
+import { LayouTabs } from '@lands-pro/antd-react-components';
 
 const data = [
   {
@@ -64,7 +64,7 @@ export default () => {
 
 ```js
 // 建议给menuData赋值为：
-import { utils } from '@lands/antd-react-components';
+import { utils } from '@lands-pro/antd-react-components';
 const { listToTree } = utils;
 const menuData = listToTree({
   data: JSON.parse(JSON.stringify(systemInfo.menus)),

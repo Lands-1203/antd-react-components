@@ -1,13 +1,13 @@
 ## 介绍
 
 本仓库是一个文档与组件集于一体的仓库，里面包含了一些常用的 react 组件，便于快速开发。
-可以将本项目克隆下来后，自己发布到自己的私有库上。也可以直接访问到本项目的私有库，使用 `npm config set --global @lands:registry=https://npm.lantao.work`，或者在项目中 `.npmrc` 文件写入 `@lands:registry=https://npm.lantao.work/`，组件仓库长期开放，项目公开维护。
+@lands-pro/antd-react-components 分别发布在了 npm 公有库和私有库，可自行决定安装的地址
 
 ## 相关文档
 
-[组件文档](https://procomponents.lantao.work/)
+[组件文档](component.lantao.work)
 
-[组件私有库](https://npm.lantao.work)
+[GitHub](npm.lantao.work)
 
 ## Development
 
@@ -30,6 +30,17 @@ $ pnpm run docs:build
 # check your project for potential problems
 $ pnpm run doctor
 ```
+
+## 效果演示
+
+![alt text](img/Snipaste_2024-03-27_11-55-13.png)
+![alt text](img/Snipaste_2024-03-27_11-59-28.png)
+![alt text](img/Snipaste_2024-03-27_11-58-24.png)
+![alt text](img/Snipaste_2024-03-27_11-57-46.png)
+![alt text](img/Snipaste_2024-03-27_11-57-10.png)
+![alt text](img/Snipaste_2024-03-27_11-56-49.png)
+![alt text](img/Snipaste_2024-03-27_11-56-35.png)
+![alt text](img/Snipaste_2024-03-27_11-55-31.png)
 
 ## LICENSE
 

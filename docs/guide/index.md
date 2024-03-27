@@ -21,5 +21,13 @@ group: 使用指南
 }
 ```
 
-- 使用 `npm config set --global @lands:registry=https://npm.lantao.work`，或者在项目中 `.npmrc` 文件写入 `@lands:registry=https://npm.lantao.work/`
-- 使用 `pnpm i @lands/antd-react-components` 安装包，如果之前已经安装需要将原来的包删除后再安装。
+## 该包发布在了私有库和 npm 公有库
+
+### 使用 npm 库
+
+无需配置
+
+### 使用私有库包
+
+- 使用 `npm config set --global @lands:registry=http://npm.lantao.work`，或者在项目中 `.npmrc` 文件写入 `@lands:registry=http://npm.lantao.work/`
+- 使用 `pnpm i @lands-pro/antd-react-components` 安装包，如果之前已经安装需要将原来的包删除后再安装。

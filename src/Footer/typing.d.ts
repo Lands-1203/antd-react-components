@@ -21,7 +21,7 @@ export interface FooterProps {
         blankTarget: true,
       },
       {
-        key: 'hz',
+        key: 'lands',
         title: <GithubOutlined />,
         href: '/',
         blankTarget: true,
