@@ -25,7 +25,7 @@ group: 使用指南
 
 ### 使用 npm 库
 
-无需配置
+使用 pnpm i @lands-pro/antd-react-components 安装包
 
 ### 使用私有库包
 
