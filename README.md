@@ -33,14 +33,14 @@ $ pnpm run doctor
 
 ## 效果演示
 
-![alt text](https://static.lantao.work/assets/Snipaste_2024-03-27_11-55-13.png)
-![alt text](https://static.lantao.work/assets/Snipaste_2024-03-27_11-59-28.png)
-![alt text](https://static.lantao.work/assets/Snipaste_2024-03-27_11-58-24.png)
-![alt text](https://static.lantao.work/assets/Snipaste_2024-03-27_11-57-46.png)
-![alt text](https://static.lantao.work/assets/Snipaste_2024-03-27_11-57-10.png)
-![alt text](https://static.lantao.work/assets/Snipaste_2024-03-27_11-56-49.png)
-![alt text](https://static.lantao.work/assets/Snipaste_2024-03-27_11-56-35.png)
-![alt text](https://static.lantao.work/assets/Snipaste_2024-03-27_11-55-31.png)
+![alt text](https://static.lantao.work/assets/20240327/Snipaste_2024-03-27_11-55-13.png)
+![alt text](https://static.lantao.work/assets/20240327/Snipaste_2024-03-27_11-59-28.png)
+![alt text](https://static.lantao.work/assets/20240327/Snipaste_2024-03-27_11-58-24.png)
+![alt text](https://static.lantao.work/assets/20240327/Snipaste_2024-03-27_11-57-46.png)
+![alt text](https://static.lantao.work/assets/20240327/Snipaste_2024-03-27_11-57-10.png)
+![alt text](https://static.lantao.work/assets/20240327/Snipaste_2024-03-27_11-56-49.png)
+![alt text](https://static.lantao.work/assets/20240327/Snipaste_2024-03-27_11-56-35.png)
+![alt text](https://static.lantao.work/assets/20240327/Snipaste_2024-03-27_11-55-31.png)
 
 ## LICENSE
 
