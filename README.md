@@ -5,9 +5,9 @@
 
 ## 相关文档
 
-[组件文档](component.lantao.work)
+[组件文档](https://procomponents.lantao.work/)
 
-[GitHub](npm.lantao.work)
+[GitHub](https://github.com/Lands-1203/antd-react-components)
 
 ## Development
 
@@ -33,14 +33,14 @@ $ pnpm run doctor
 
 ## 效果演示
 
-![alt text](img/Snipaste_2024-03-27_11-55-13.png)
-![alt text](img/Snipaste_2024-03-27_11-59-28.png)
-![alt text](img/Snipaste_2024-03-27_11-58-24.png)
-![alt text](img/Snipaste_2024-03-27_11-57-46.png)
-![alt text](img/Snipaste_2024-03-27_11-57-10.png)
-![alt text](img/Snipaste_2024-03-27_11-56-49.png)
-![alt text](img/Snipaste_2024-03-27_11-56-35.png)
-![alt text](img/Snipaste_2024-03-27_11-55-31.png)
+![alt text](https://static.lantao.work/assets/Snipaste_2024-03-27_11-55-13.png)
+![alt text](https://static.lantao.work/assets/Snipaste_2024-03-27_11-59-28.png)
+![alt text](https://static.lantao.work/assets/Snipaste_2024-03-27_11-58-24.png)
+![alt text](https://static.lantao.work/assets/Snipaste_2024-03-27_11-57-46.png)
+![alt text](https://static.lantao.work/assets/Snipaste_2024-03-27_11-57-10.png)
+![alt text](https://static.lantao.work/assets/Snipaste_2024-03-27_11-56-49.png)
+![alt text](https://static.lantao.work/assets/Snipaste_2024-03-27_11-56-35.png)
+![alt text](https://static.lantao.work/assets/Snipaste_2024-03-27_11-55-31.png)
 
 ## LICENSE
 
