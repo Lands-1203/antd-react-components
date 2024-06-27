@@ -118,10 +118,7 @@ export default function ProTableEdit<T = any>(props: ProTableEditProps<T>) {
   }, [open]);
   useEffect(() => {
     if (open) {
-      // 由于modal是出于摧毁状态此时表单还未出现dom创建所以需要加入延时队列 让open先粗发表单创建
-      setTimeout(() => {
-        formRef?.current?.setFieldsValue({ ...initData });
-      }, 0);
+      formRef?.current?.setFieldsValue({ ...initData });
     }
   }, [initData?.[String(initDataKey)], initData, open]);
 
@@ -344,6 +341,7 @@ export default function ProTableEdit<T = any>(props: ProTableEditProps<T>) {
       open={open}
       onCancel={handleCancel}
       destroyOnClose
+      forceRender
       footer={[
         <Button
           key="reset"
