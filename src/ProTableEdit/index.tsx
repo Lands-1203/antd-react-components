@@ -31,6 +31,7 @@ export default function ProTableEdit<T = any>(props: ProTableEditProps<T>) {
     onSubCallback,
     onCancel,
     tableActionRef,
+    formatEchoData,
     getEditActionRef,
     getEditFormRef,
     proTableProps,
@@ -118,7 +119,11 @@ export default function ProTableEdit<T = any>(props: ProTableEditProps<T>) {
   }, [open]);
   useEffect(() => {
     if (open) {
-      formRef?.current?.setFieldsValue({ ...initData });
+      const newData =
+        formatEchoData instanceof Function
+          ? formatEchoData(initData)
+          : initData;
+      formRef?.current?.setFieldsValue(newData);
     }
   }, [initData?.[String(initDataKey)], initData, open]);
 
@@ -171,6 +176,28 @@ export default function ProTableEdit<T = any>(props: ProTableEditProps<T>) {
           val &&
             formRef.current?.setFieldsValue({
               [dataIndex]: formatDate(val, valueType as any),
+            });
+        }
+      }
+
+      if (item.valueTransform instanceof Function) {
+        const val = formRef.current?.getFieldValue(item?.dataIndex || '');
+        if (dataIndex instanceof Array) {
+          const temp = {};
+          let tv: Record<string, any> = temp;
+          dataIndex.forEach((dv: any, i) => {
+            if (i === dataIndex.length - 1) {
+              tv[dv] = item.valueTransform?.(val);
+            } else {
+              tv[dv] = {};
+            }
+            tv = tv[dv];
+          });
+          formRef.current?.setFieldsValue(temp);
+        } else if (typeof dataIndex === 'string') {
+          val &&
+            formRef.current?.setFieldsValue({
+              [dataIndex]: item.valueTransform(val),
             });
         }
       }

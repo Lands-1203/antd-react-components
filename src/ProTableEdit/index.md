@@ -72,6 +72,7 @@ title: ProTableEdit-快捷编辑框
 | `onSubCallback`           | 提交完成后的回调函数                                                                       | 否       | [onSubCallbackProps](#onsubcallbackprops)                                             |                |
 | `onSubmit`                | 点击确认后的请求方法                                                                       | 否       | [ProTableEditOnSubmit](#protableeditonsubmit)                                         |                |
 | `open`                    | 显示状态                                                                                   | 是       | `boolean`                                                                             |                |
+| `formatEchoData`          | 格式化回显数据                                                                             | 否       | `(v:any)=>any`                                                                        |                |
 | `proTableProps`           | ProTable 的配置项                                                                          | 否       | [ProTableProps<any, any>](https://procomponents.ant.design/components/table#protable) |                |
 | `setOpen`                 | 控制显示状态的函数                                                                         | 是       | `React.Dispatch<React.SetStateAction<boolean>>`                                       |                |
 | `subMethod`               | 默认不传，在新增和修改的时候用于改变请求方式                                               | 否       | [subMethodProps](#submethodprops)                                                     |                |
@@ -94,10 +95,11 @@ title: ProTableEdit-快捷编辑框
 
 编辑框的表单项，该属性继承了 `ProTable` 的 `columns`，这样做就能同时完成表格开发和表单开发。
 
-| 属性                                                                                                                              | 描述       | 是否必传 | 类型      |
-| --------------------------------------------------------------------------------------------------------------------------------- | ---------- | -------- | --------- |
-| `immunityReset`                                                                                                                   | 不重置该值 | 否       | `boolean` |
-| ...其他属性（参考 [ProColumns\<T\>](https://procomponents.ant.design/components/table#columns-%E5%88%97%E5%AE%9A%E4%B9%89) 定义） | ...        | ...      | ...       |
+| 属性                                                                                                                              | 描述                         | 是否必传 | 类型              |
+| --------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- | -------- | ----------------- |
+| `immunityReset`                                                                                                                   | 不重置该值                   | 否       | `boolean`         |
+| `valueTransform`                                                                                                                  | 表单数据到接口的数据转换方法 | 否       | `(v: any) => any` |
+| ...其他属性（参考 [ProColumns\<T\>](https://procomponents.ant.design/components/table#columns-%E5%88%97%E5%AE%9A%E4%B9%89) 定义） | ...                          | ...      | ...               |
 
 ### ProTableEditInitData
 

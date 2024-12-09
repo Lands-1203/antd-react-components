@@ -67,6 +67,10 @@ export type ProTableEditColumns<T = any> = ProColumns<T> & {
    * @description 不重置该值
    */
   immunityReset?: boolean;
+  /**
+   * @description 表单数据到接口的数据转换方法
+   */
+  valueTransform?: (v: any) => any;
 };
 
 export interface ProTableEditInitData {
@@ -124,6 +128,11 @@ export interface ProTableEditProps<T = any> {
    * @description 显示状态
    */
   open?: boolean;
+
+  /**
+   * @description 格式化回显数据
+   */
+  formatEchoData?: (v: any) => any;
   /**
    * @description 表单的横纵排列方式
    * @default horizontal
