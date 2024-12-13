@@ -88,7 +88,7 @@ interface editActionRefProps<
   T extends Record<string, any> = Record<string, any>,
 > extends ActionType {
   /** 打开编辑框 */
-  open: () => void;
+  open: (v: T & Record<string, any>) => void;
   /** 关闭编辑框 */
   close: () => void;
   /**

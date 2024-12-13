@@ -70,7 +70,8 @@ export default function ProTableEdit<T = any>(props: ProTableEditProps<T>) {
     props?.editActionRef,
     () => {
       return {
-        open() {
+        open(v) {
+          v && (initDataRef.current = v);
           setOpen(true);
         },
         close() {
