@@ -55,12 +55,13 @@ export default function ProTableEdit<T = any>(props: ProTableEditProps<T>) {
     propsModalTitle || modalProps?.title || '编辑',
   );
   const [open, setOpen] = useState<boolean | undefined>(false);
-  const [initData, setInitData] = useState<Record<string, any> | undefined>(
-    propsFormInitData || [],
+
+  const initDataRef = useRef<Record<string, any> | undefined>(
+    propsFormInitData || {},
   );
-  const [initDataKey, setInitDataKey] = useState<
-    typeof propsInitDataKey | undefined
-  >(propsInitDataKey);
+  const initDataKeyRef = useRef<typeof propsInitDataKey | undefined>(
+    propsInitDataKey,
+  );
 
   const [OK_TEXT, setOK_TEXT] = useState('');
   const [CANCEL_TEXT, setCANCEL_TEXT] = useState('');
@@ -76,17 +77,17 @@ export default function ProTableEdit<T = any>(props: ProTableEditProps<T>) {
           setOpen(false);
         },
         setInitData(v) {
-          setInitData(v);
+          initDataRef.current = v;
         },
-        initData,
-        initDataKey: initDataKey,
+        initData: initDataRef.current,
+        initDataKey: initDataKeyRef.current,
         setModalTitle(title) {
           setModalTitle(title);
         },
         ...actionRef.current,
       } as editActionRefProps;
     },
-    [props?.editActionRef, actionRef.current, initDataKey, initData],
+    [actionRef.current],
   );
   useImperativeHandle(
     props?.editFormRef,
@@ -101,12 +102,12 @@ export default function ProTableEdit<T = any>(props: ProTableEditProps<T>) {
   }, [propsModalTitle]);
   // 设置初始数据
   useEffect(() => {
-    setInitData(propsFormInitData);
+    initDataRef.current = propsFormInitData;
   }, [propsFormInitData]);
   // 设置主键
   useEffect(() => {
-    setInitDataKey(propsInitDataKey);
-  }, [initDataKey]);
+    initDataKeyRef.current = propsInitDataKey;
+  }, [propsInitDataKey]);
   useEffect(() => {
     setOpen(props.open);
   }, [props.open]);
@@ -121,11 +122,15 @@ export default function ProTableEdit<T = any>(props: ProTableEditProps<T>) {
     if (open) {
       const newData =
         formatEchoData instanceof Function
-          ? formatEchoData(initData)
-          : initData;
+          ? formatEchoData(initDataRef.current)
+          : initDataRef.current;
       formRef?.current?.setFieldsValue(newData);
     }
-  }, [initData?.[String(initDataKey)], initData, open]);
+  }, [
+    initDataRef.current?.[String(initDataKeyRef.current)],
+    initDataRef.current,
+    open,
+  ]);
 
   useEffect(() => {
     setOK_TEXT(okText || '');
@@ -134,7 +139,8 @@ export default function ProTableEdit<T = any>(props: ProTableEditProps<T>) {
     setCANCEL_TEXT(cancelText || '');
   }, [cancelText]);
 
-  const getInitDataKeyValue = () => getPropertyValue(initData, initDataKey);
+  const getInitDataKeyValue = () =>
+    getPropertyValue(initDataRef.current, initDataKeyRef.current);
   /** 表格校验 */
   const handleValidateFields = async () => {
     formRef?.current?.validateFields().catch((e) => {
@@ -207,10 +213,14 @@ export default function ProTableEdit<T = any>(props: ProTableEditProps<T>) {
   const getOriginalParams = () => {
     const formParams = formRef?.current?.getFieldsValue();
     let params: Record<string, any> = {};
-    if (isCarryingInitialParams && initData) {
-      params = initData;
+    if (isCarryingInitialParams && initDataRef.current) {
+      params = initDataRef.current;
     } else {
-      params = setPropertyValue(params, initDataKey, getInitDataKeyValue());
+      params = setPropertyValue(
+        params,
+        initDataKeyRef.current,
+        getInitDataKeyValue(),
+      );
     }
     params = Object.assign(params, formParams, subParams);
 
@@ -261,7 +271,9 @@ export default function ProTableEdit<T = any>(props: ProTableEditProps<T>) {
     let status = 'success';
     let res: Record<string, any> = {};
     const defaultMethod =
-      initDataKey && getInitDataKeyValue() !== undefined ? 'PUT' : 'POST';
+      initDataKeyRef.current && getInitDataKeyValue() !== undefined
+        ? 'PUT'
+        : 'POST';
     if (onSubmit) {
       res = await onSubmit(params, {
         method: subMethod || defaultMethod,
