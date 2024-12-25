@@ -156,8 +156,9 @@ export default function ProTableEdit<T = any>(props: ProTableEditProps<T>) {
     });
     await formRef?.current?.validateFields();
   };
-  /** 格式化时间数据 */
-  const handleSubmitDataForTime = () => {
+  const transformDataRef = useRef<Record<string, any>>({});
+  /** 格式化提交数据 */
+  const handleSubmitDataFormat = () => {
     columns.forEach((item) => {
       const dataIndex = item?.dataIndex;
       const valueType = (item.valueType as string) || '';
@@ -200,12 +201,10 @@ export default function ProTableEdit<T = any>(props: ProTableEditProps<T>) {
             }
             tv = tv[dv];
           });
-          formRef.current?.setFieldsValue(temp);
+          transformDataRef.current = temp;
         } else if (typeof dataIndex === 'string') {
           val &&
-            formRef.current?.setFieldsValue({
-              [dataIndex]: item.valueTransform(val),
-            });
+            (transformDataRef.current[dataIndex] = item.valueTransform(val));
         }
       }
     });
@@ -223,7 +222,12 @@ export default function ProTableEdit<T = any>(props: ProTableEditProps<T>) {
         getInitDataKeyValue(),
       );
     }
-    params = Object.assign(params, formParams, subParams);
+    params = Object.assign(
+      params,
+      formParams,
+      transformDataRef.current,
+      subParams,
+    );
 
     subParamsDel?.forEach((item) => {
       if (item instanceof Array) {
@@ -302,7 +306,7 @@ export default function ProTableEdit<T = any>(props: ProTableEditProps<T>) {
         formRef?.current?.getFieldsValue(),
       );
       // 格式化表格中提交的时间数据
-      handleSubmitDataForTime();
+      handleSubmitDataFormat();
       // 校验
       await handleValidateFields();
       isMessage &&
